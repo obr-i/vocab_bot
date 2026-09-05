@@ -9,7 +9,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 # Конфигурация
 TOKEN = os.environ.get("BOT_TOKEN")
-APP_URL = "https://ваш-логин.github.io/имя-репозитория/"
+APP_URL = "https://obr-i.github.io/vocab/"
 
 # Flask-приложение для ответа на пинги
 app = Flask(__name__)
