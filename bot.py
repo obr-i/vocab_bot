@@ -7,24 +7,39 @@ from flask import Flask, request, jsonify
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Конфигурация
-TOKEN = os.environ.get("BOT_TOKEN")
-APP_URL = "https://obr-i.github.io/vocab/"
 
 # Flask-приложение для ответа на пинги
 app = Flask(__name__)
 
+
+
+TOKEN = os.environ.get("BOT_TOKEN")
+
+# Ссылки на ваши приложения (замените на свои)
+APP_SLOVARNIK = "https://obr-i.github.io/vocab/"          # словарные слова
+APP_ORFOEPIA = "https://obr-i.github.io/orthoepy_cards/"  # орфоэпия
+
 logging.basicConfig(level=logging.INFO)
 
-# ---- Обработчики Telegram ----
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [[InlineKeyboardButton(
-        text="📚 Открыть карточки",
-        web_app=WebAppInfo(url=APP_URL)
-    )]]
+    # Создаём две кнопки
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                text="📚 Словарные слова",
+                web_app=WebAppInfo(url=APP_SLOVARNIK)
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="🔊 Орфоэпия (ударения)",
+                web_app=WebAppInfo(url=APP_ORFOEPIA)
+            )
+        ]
+    ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Привет! Нажми на кнопку, чтобы запустить тренажёр словарных слов.",
+        "Привет! Выбери тренажёр:",
         reply_markup=reply_markup
     )
 
