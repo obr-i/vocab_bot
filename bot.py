@@ -42,12 +42,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text="🔊 Орфоэпия (ударения)",
                 web_app=WebAppInfo(url=APP_ORFOEPIA)
             )
-        ]
+        ],
+        [InlineKeyboardButton("ℹ️ Информация", callback_data="info")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
         "Привет! Выбери тренажёр:",
         reply_markup=reply_markup
+    )
+    async def info_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    await query.edit_message_text(  
+        "Это бот для подготовки к ЕГЭ по русскому языку."
     )
 
 # ---- Flask-маршрут для проверки жизни ----
