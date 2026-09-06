@@ -18,6 +18,7 @@ TOKEN = os.environ.get("BOT_TOKEN")
 # Ссылки на ваши приложения (замените на свои)
 APP_SLOVARNIK = "https://obr-i.github.io/vocab/"          # словарные слова
 APP_ORFOEPIA = "https://obr-i.github.io/orthoepy_cards/"  # орфоэпия
+APP_O_YO = "https://obr-i.github.io/o_yo_cards/"
 
 logging.basicConfig(level=logging.INFO)
 
@@ -28,6 +29,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton(
                 text="📚 Словарные слова",
                 web_app=WebAppInfo(url=APP_SLOVARNIK)
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="📘 О/Ё после шипящих",
+                web_app=WebAppInfo(url=APP_O_YO)
             )
         ],
         [
