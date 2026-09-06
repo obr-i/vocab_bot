@@ -15,14 +15,16 @@ TOKEN = os.environ.get("BOT_TOKEN")
 APP_SLOVARNIK = "https://obr-i.github.io/vocab/"
 APP_ORFOEPIA = "https://obr-i.github.io/orthoepy_cards/"
 APP_O_YO = "https://obr-i.github.io/o_yo_cards/"
+APP_EXAM_9 = "https://obr-i.github.io/exam_ru_9/"
 
 logging.basicConfig(level=logging.INFO)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-        [InlineKeyboardButton("📚 Словарные слова", web_app=WebAppInfo(url=APP_SLOVARNIK))],
-        [InlineKeyboardButton("📘 О/Ё после шипящих", web_app=WebAppInfo(url=APP_O_YO))],
-        [InlineKeyboardButton("🔊 Орфоэпия (ударения)", web_app=WebAppInfo(url=APP_ORFOEPIA))],
+        [InlineKeyboardButton("📚 №9 ЕГЭ по русскому языку", web_app=WebAppInfo(url=APP_EXAM_9))],
+        [InlineKeyboardButton("🔊 №4 ЕГЭ по русскому языку. Орфоэпия)", web_app=WebAppInfo(url=APP_ORFOEPIA))],
+        [InlineKeyboardButton("📙 Словарные слова", web_app=WebAppInfo(url=APP_SLOVARNIK))],
+        [InlineKeyboardButton("📗 О/Ё после шипящих", web_app=WebAppInfo(url=APP_O_YO))],
         [InlineKeyboardButton("ℹ️ Информация", callback_data="info")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
