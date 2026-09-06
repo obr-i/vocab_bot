@@ -35,7 +35,7 @@ async def info_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     await context.bot.send_message(
         chat_id=query.message.chat_id,
-        text="Это бот для подготовки к ЕГЭ по русскому языку.\nДоступны тренажёры по словарным словам, орфоэпии и правилам О/Ё."
+        text="Это бот для подготовки к ЕГЭ 2027 по русскому языку.\n *В разработке*"
     )
 
 @flask_app.route('/')
