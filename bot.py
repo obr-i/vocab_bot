@@ -94,6 +94,7 @@ def main():
     # Запускаем Telegram бота (основной поток)
     application = Application.builder().token(TOKEN).build()
     application.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(info_callback, pattern="info"))
     application.run_polling()
 
 if __name__ == "__main__":
